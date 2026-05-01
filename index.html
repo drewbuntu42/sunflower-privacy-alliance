@@ -1058,7 +1058,7 @@ footer {
       <div class="subscribe-form-wrap">
         <div class="form-title">Join the Dispatch</div>
         <div class="form-sub">No spam. Unsubscribe anytime.</div>
-        <form action="https://list.privacyks.org/subscription/form" method="POST">
+        <form id="subscribe-form">
           <input type="hidden" name="nonce" value="">
           <div class="field">
             <label for="name">Name</label>
@@ -1088,9 +1088,50 @@ footer {
               </div>
             </div>
           </div>
-          <button type="submit" class="form-submit">Subscribe to the Dispatch</button>
+          <button type="submit" class="form-submit" id="subscribe-btn">Subscribe to the Dispatch</button>
+          <p class="form-fine" id="subscribe-msg" style="display:none;"></p>
           <p class="form-fine">Your information is never shared or sold.<br>Managed via self-hosted Listmonk.</p>
         </form>
+
+<script>
+document.getElementById('subscribe-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('subscribe-btn');
+  const msg = document.getElementById('subscribe-msg');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const formData = new FormData(this);
+
+  try {
+    const res = await fetch('https://spa-listmonk-proxy.andrew-cranmer.workers.dev/', {
+      method: 'POST',
+      body: formData,
+    });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = '✓ Subscribed!';
+      btn.style.background = '#2d6a2d';
+      msg.textContent = 'Check your email for a confirmation link.';
+      msg.style.display = 'block';
+      msg.style.color = '#8B5CC8';
+      this.querySelectorAll('input:not([type=checkbox][type=hidden]), input[type=checkbox]').forEach(el => el.disabled = true);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe to the Dispatch';
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.display = 'block';
+      msg.style.color = '#9B2B2B';
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Subscribe to the Dispatch';
+    msg.textContent = 'Could not connect. Please try again.';
+    msg.style.display = 'block';
+    msg.style.color = '#9B2B2B';
+  }
+});
+</script>
       </div>
     </div>
   </div>
