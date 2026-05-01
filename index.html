@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunflower Privacy Alliance — Kansas</title>
+<meta name="description" content="A Kansas coalition investigating government surveillance, defending the Fourth Amendment, and demanding accountability. Wichita-based. Nonpartisan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Sunflower yellow — warm contrast anchor, logo color */
+  --gold:        #D4A017;
+  --gold-light:  #E8B830;
+  --gold-pale:   #FDF3D0;
+  --gold-dark:   #A07A10;
+  --gold-dim:    rgba(212,160,23,0.1);
+
+  /* Purple highlight system */
+  --purple:      #6B3FA0;
+  --purple-light:#8B5CC8;
+  --purple-pale: #EDE6F8;
+  --purple-dim:  rgba(107,63,160,0.12);
+
+  /* Backgrounds — true black */
+  --black:       #0C0C0C;
+  --black-soft:  #141414;
+  --black-mid:   #1A1A1A;
+  --black-card:  #111111;
+
+  /* Type */
+  --off-white:   #F5F5F3;
+  --text-body:   #B8B8B4;
+  --text-muted:  #6A6A66;
+
+  /* Borders — purple-tinted */
+  --border:      rgba(107,63,160,0.2);
+  --border-med:  rgba(107,63,160,0.38);
+  --border-full: rgba(107,63,160,0.6);
+
+  /* Alert */
+  --red:         #9B2B2B;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--off-white);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* ── LAYOUT ── */
+.z1        { position: relative; z-index: 1; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
+.wide      { max-width: 1140px; margin: 0 auto; padding: 0 2.5rem; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(12,12,12,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.nav-brand svg { width: 30px; height: 30px; flex-shrink: 0; }
+.nav-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--off-white);
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--purple-light); }
+.nav-links .nav-cta {
+  color: var(--purple-light);
+  border: 1px solid var(--border-med);
+  padding: 0.4rem 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links .nav-cta:hover {
+  background: var(--purple);
+  color: var(--off-white);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 94vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 5rem;
+}
+
+/* Diagonal rule lines — same technique as campaign site */
+.hero-rules {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-rules::before {
+  content: '';
+  position: absolute;
+  right: 36%;
+  top: -20%;
+  width: 1px;
+  height: 140%;
+  background: linear-gradient(to bottom, transparent, rgba(107,63,160,0.12) 25%, rgba(107,63,160,0.12) 75%, transparent);
+}
+.hero-rules::after {
+  content: '';
+  position: absolute;
+  right: -5%;
+  top: -10%;
+  width: 50%;
+  height: 120%;
+  border-left: 1px solid rgba(107,63,160,0.05);
+  transform: rotate(10deg);
+}
+
+/* Hero split: text left / logo right */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.hero-hed {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--off-white);
+  margin-bottom: 1.25rem;
+}
+.hero-hed em {
+  font-style: italic;
+  color: var(--purple-light);
+}
+
+.hero-rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--border-med);
+  margin-bottom: 1.5rem;
+}
+
+.hero-dek {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-body);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+/* Logo side */
+.hero-logo-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-logo-frame {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Concentric purple rings */
+.hero-logo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(107,63,160,0.3);
+}
+.hero-logo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(107,63,160,0.12);
+}
+.hero-logo-img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 40px rgba(107,63,160,0.25)) drop-shadow(0 0 80px rgba(212,160,23,0.1));
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.8rem 1.75rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-gold {
+  background: var(--purple);
+  color: var(--off-white);
+  font-weight: 500;
+}
+.btn-gold:hover { background: var(--purple-light); }
+.btn-ghost {
+  background: transparent;
+  color: var(--purple-light);
+  border: 1px solid var(--border-med);
+}
+.btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-med) 30%, var(--border-med) 70%, transparent);
+}
+
+/* ── STAT STRIP ── */
+.stat-strip {
+  background: var(--black-mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.75rem 0;
+  position: relative;
+  z-index: 1;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.stat-cell {
+  padding: 0 3rem;
+  border-right: 1px solid var(--border);
+}
+.stat-cell:first-child { padding-left: 0; }
+.stat-cell:last-child  { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--purple-light);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+.stat-num.alert { color: #C0392B; }
+.stat-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 200px;
+}
+
+/* ── MISSION ── */
+.mission { background: var(--black-soft); padding: 5.5rem 0; position: relative; z-index: 1; }
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.mission-hed {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--off-white);
+  margin-bottom: 1.5rem;
+}
+.mission-hed em { font-style: italic; color: var(--purple-light); }
+.mission-body p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.mission-body p:last-child { margin-bottom: 0; }
+
+.pillars { display: flex; flex-direction: column; }
+.pillar {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.pillar:first-child { border-top: 1px solid var(--border); }
+.pillar-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--purple-light);
+  letter-spacing: 0.1em;
+  padding-top: 0.2rem;
+}
+.pillar h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+.pillar p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── CAMPAIGNS ── */
+.campaigns { background: var(--black); padding: 5.5rem 0; position: relative; z-index: 1; }
+.campaign-list { display: flex; flex-direction: column; gap: 1px; margin-top: 0.5rem; }
+
+.campaign-card {
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  padding: 2.25rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: start;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.campaign-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border-med);
+  transition: background 0.2s;
+}
+.campaign-card:hover { border-color: var(--border-med); }
+.campaign-card:hover::before { background: var(--purple); }
+.campaign-card + .campaign-card { margin-top: 1rem; }
+
+.campaign-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.s-active   { color: #C0392B; }
+.s-active .status-dot   { background: #C0392B; animation: blink 2s ease-in-out infinite; }
+.s-building { color: var(--purple-light); }
+.s-building .status-dot { background: var(--purple); }
+.s-research { color: var(--text-muted); }
+.s-research .status-dot { background: var(--text-muted); }
+
+.campaign-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.65rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.campaign-card p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+.card-action { flex-shrink: 0; padding-top: 0.15rem; }
+
+/* ── PETITION ── */
+.petition {
+  background: var(--black-mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+/* Subtle gold glow */
+.petition::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(107,63,160,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.petition-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.petition-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.petition-eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: var(--border-med);
+}
+.petition h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--off-white);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+.petition-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-body);
+  line-height: 1.7;
+  max-width: 540px;
+}
+.petition-cta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.petition-cta-col .btn { white-space: nowrap; }
+.petition-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  background: var(--black-soft);
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.pullquote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem;
+  color: var(--border);
+  line-height: 0.6;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.pullquote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--off-white);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.pullquote blockquote em {
+  font-style: italic;
+  color: var(--purple-light);
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1.75rem;
+  font-family: 'DM Mono', monospace;
+  font-style: normal;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.pullquote-line {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--border-med);
+  margin: 1.5rem auto 0;
+}
+
+/* ── SUBSCRIBE ── */
+.subscribe { background: var(--black); padding: 5.5rem 0; position: relative; z-index: 1; }
+.subscribe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.subscribe-hed {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--off-white);
+  margin-bottom: 1.5rem;
+}
+.subscribe-hed em { font-style: italic; color: var(--purple-light); }
+.subscribe-body p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.subscribe-body p:last-child { margin-bottom: 0; }
+
+.subscribe-form-wrap {
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  padding: 2.25rem;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.2rem;
+}
+.form-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.field { margin-bottom: 0.85rem; }
+.field label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.field input, .field select {
+  width: 100%;
+  background: var(--black-soft);
+  border: 1px solid var(--border);
+  color: var(--off-white);
+  padding: 0.65rem 0.85rem;
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+.field input:focus, .field select:focus { border-color: var(--purple-light); }
+.field input::placeholder { color: var(--text-muted); }
+.field select option { background: var(--black-soft); }
+.form-submit {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background: var(--purple);
+  color: var(--off-white);
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-submit:hover { background: var(--purple-light); }
+.form-fine {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  text-align: center;
+  line-height: 1.55;
+}
+
+/* ── BLOG ── */
+.blog { background: var(--black-soft); padding: 5.5rem 0; position: relative; z-index: 1; }
+.blog-placeholder {
+  border: 1px solid var(--border);
+  padding: 3.5rem;
+  text-align: center;
+  background: var(--black-card);
+  position: relative;
+  overflow: hidden;
+}
+.blog-placeholder::after {
+  content: 'FORTHCOMING';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: rgba(107,63,160,0.04);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.blog-placeholder h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+.blog-placeholder p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-body);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black-soft);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--purple-light);
+  display: block;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.03em;
+}
+.footer-tagline {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.footer-col h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.5rem; }
+.footer-col a {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.footer-col a:hover { color: var(--purple-light); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer-copy, .footer-legal {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+.footer-legal a { color: var(--text-muted); text-decoration: none; }
+.footer-legal a:hover { color: var(--purple-light); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow { animation: fadeUp 0.5s ease both 0.05s; }
+.hero-hed     { animation: fadeUp 0.55s ease both 0.15s; }
+.hero-rule    { animation: fadeUp 0.5s ease both 0.22s; }
+.hero-dek     { animation: fadeUp 0.5s ease both 0.28s; }
+.hero-actions { animation: fadeUp 0.5s ease both 0.36s; }
+.hero-logo-col { animation: fadeUp 0.7s ease both 0.2s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .hero { min-height: auto; padding: 5rem 0 4rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-logo-col { order: -1; }
+  .hero-logo-frame { width: 200px; height: 200px; }
+  .hero-logo-img { width: 160px; height: 160px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .stat-cell { padding: 0 0 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; padding-bottom: 0; }
+  .mission-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .campaign-card { grid-template-columns: 1fr; gap: 1rem; }
+  .petition-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .petition-cta-col { align-items: flex-start; }
+  .petition-note { text-align: left; }
+  .subscribe-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="27" stroke="rgba(107,63,160,0.4)" stroke-width="1" fill="none"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(0 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(30 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(60 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(90 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(120 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(150 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(180 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(210 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(240 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(270 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(300 30 30)"/>
+        <ellipse cx="30" cy="7" rx="3.5" ry="6.5" fill="#D4A017" opacity="0.7" transform="rotate(330 30 30)"/>
+        <ellipse cx="30" cy="30" rx="10" ry="6" fill="#0C0C0C" stroke="rgba(107,63,160,0.5)" stroke-width="0.8"/>
+        <circle cx="30" cy="30" r="4" fill="#D4A017"/>
+        <circle cx="31.5" cy="28.5" r="1.2" fill="#F0EBE0" opacity="0.85"/>
+      </svg>
+      <span class="nav-brand-name">Sunflower Privacy Alliance</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#campaigns">Campaigns</a></li>
+      <li><a href="https://blog.privacyks.org">Dispatch</a></li>
+      <li><a href="https://petition.privacyks.org" class="nav-cta">Sign the Petition</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-rules"></div>
+  <div class="wide z1">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Active Investigation — Wichita, Kansas
+        </p>
+        <h1 class="hero-hed">
+          191 cameras.<br>
+          $478,000 a year.<br>
+          <em>Zero accountability.</em>
+        </h1>
+        <div class="hero-rule"></div>
+        <p class="hero-dek">
+          The Wichita Police Department operates one of Kansas's largest automatic license plate reader networks — tracking every vehicle that passes, retaining the data, and refusing public access to audit logs. We asked to see the records. They said no. Now we're asking louder.
+        </p>
+        <div class="hero-actions">
+          <a href="https://petition.privacyks.org" class="btn btn-gold">Sign the Petition</a>
+          <a href="#campaigns" class="btn btn-ghost">All Campaigns</a>
+        </div>
+      </div>
+
+      <div class="hero-logo-col">
+        <div class="hero-logo-frame">
+          <!--
+            Replace src with your actual logo file.
+            For Cloudflare Pages: place logo.png in your repo root.
+          -->
+          <img
+            src="logo.png"
+            alt="Sunflower Privacy Alliance"
+            class="hero-logo-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          >
+          <!-- Fallback SVG -->
+          <svg style="display:none; width:260px; height:260px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="94" stroke="rgba(107,63,160,0.25)" stroke-width="1.5" fill="none"/>
+            <circle cx="100" cy="100" r="78" stroke="rgba(107,63,160,0.12)" stroke-width="1" fill="none" stroke-dasharray="3 6"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(0 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(30 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(60 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(90 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(120 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(150 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(180 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(210 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(240 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(270 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(300 100 100)"/>
+            <ellipse cx="100" cy="18" rx="11" ry="20" fill="#D4A017" opacity="0.8" transform="rotate(330 100 100)"/>
+            <ellipse cx="100" cy="100" rx="36" ry="22" fill="#0C0C0C" stroke="rgba(107,63,160,0.6)" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="14" fill="#D4A017"/>
+            <circle cx="106" cy="94" r="5.5" fill="#F0EBE0" opacity="0.85"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip z1">
+  <div class="container">
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num">191</div>
+        <div class="stat-desc">Flock Safety ALPR cameras<br>operating in Wichita</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">$478K</div>
+        <div class="stat-desc">Annual cost absorbed into<br>WPD's software budget</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num alert">0</div>
+        <div class="stat-desc">KORA audit log requests<br>granted to the public</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="container">
+    <p class="section-label">Our Mission</p>
+    <div class="mission-grid">
+      <div class="mission-body">
+        <h2 class="mission-hed">We investigate surveillance. We publish findings. <em>We demand accountability.</em></h2>
+        <p>Government surveillance infrastructure is expanding across Kansas with minimal public debate, opaque contracts, and data retention policies that citizens have never been allowed to scrutinize. Automatic license plate readers log your commute. Data brokers sell your movements to agencies that couldn't obtain them through a warrant.</p>
+        <p>The Sunflower Privacy Alliance is a Wichita-based coalition of researchers, advocates, and concerned Kansans who believe the Fourth Amendment isn't optional. We file public records requests. We show up to city council. We publish everything we find — with the source documents attached.</p>
+        <p>We are nonpartisan. We are methodical. We are not going away.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div>
+            <h3>Investigate</h3>
+            <p>FOIA and KORA requests, city council hearings, and documentation of what agencies prefer to keep opaque.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div>
+            <h3>Publish</h3>
+            <p>Every finding published with source documents. No paywalls, no embargoes. The public paid for these records.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div>
+            <h3>Advocate</h3>
+            <p>Model ordinances, coordinated testimony, and sustained pressure until accountability exists in law and in practice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider z1"></div>
+
+<!-- CAMPAIGNS -->
+<section class="campaigns" id="campaigns">
+  <div class="container">
+    <p class="section-label">Active Campaigns</p>
+    <div class="campaign-list">
+
+      <div class="campaign-card">
+        <div>
+          <p class="campaign-status s-active">
+            <span class="status-dot"></span>Active Investigation
+          </p>
+          <h3>Demand Accountability for Wichita's ALPR Network</h3>
+          <p>WPD operates 191 Flock Safety license plate readers at ~$2,500 per camera per year, funded through its own software budget after the original DOJ grant expired. We filed a Kansas Open Records Act request for audit logs showing who accessed the data and when. The request was denied. WPD has since acknowledged publicly that they lack the internal capacity to audit the system themselves. A $478,000 surveillance network with no independent oversight and no public access to records is a system operating on trust alone — and trust must be earned.</p>
+        </div>
+        <div class="card-action">
+          <a href="https://petition.privacyks.org" class="btn btn-gold">Sign →</a>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div>
+          <p class="campaign-status s-building">
+            <span class="status-dot"></span>In Development
+          </p>
+          <h3>Model Surveillance Oversight Ordinance</h3>
+          <p>We are drafting a model city ordinance requiring community oversight boards, mandatory data retention limits, annual public audits, and prohibition on facial recognition technology in public spaces — suitable for adoption by any Kansas municipality.</p>
+        </div>
+        <div class="card-action">
+          <a href="#subscribe" class="btn btn-ghost">Get Involved →</a>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div>
+          <p class="campaign-status s-research">
+            <span class="status-dot"></span>Research
+          </p>
+          <h3>Data Broker Procurement Audit</h3>
+          <p>Kansas state and local agencies are purchasing commercial data — location history, behavioral profiles, purchase records — from data brokers, effectively bypassing the Fourth Amendment warrant requirements that would apply to direct collection. We are mapping these contracts.</p>
+        </div>
+        <div class="card-action">
+          <a href="https://blog.privacyks.org" class="btn btn-ghost">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PETITION -->
+<div class="petition">
+  <div class="container">
+    <div class="petition-inner">
+      <div>
+        <p class="petition-eyebrow">Open Petition — Wichita, Kansas</p>
+        <h2>Demand Transparency for Wichita's ALPR Surveillance Network</h2>
+        <p class="petition-sub">WPD denied our records request. They've admitted they can't audit the system themselves. If they aren't watching the watchers — and won't let us — what guardrails exist at all? Add your name.</p>
+      </div>
+      <div class="petition-cta-col">
+        <a href="https://petition.privacyks.org" class="btn btn-gold">Sign the Petition</a>
+        <p class="petition-note">Petition now open</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PULLQUOTE -->
+<div class="pullquote z1">
+  <div class="container">
+    <span class="pullquote-mark">"</span>
+    <blockquote>
+      The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, <em>shall not be violated.</em>
+    </blockquote>
+    <cite>Fourth Amendment — United States Constitution, 1791</cite>
+    <div class="pullquote-line"></div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE -->
+<section class="subscribe" id="subscribe">
+  <div class="container">
+    <p class="section-label">Join the Alliance</p>
+    <div class="subscribe-grid">
+      <div class="subscribe-body">
+        <h2 class="subscribe-hed">The watchers don't announce themselves. <em>Neither should accountability.</em></h2>
+        <p>Subscribe to the Sunflower Privacy Alliance dispatch — investigation updates, action alerts, public records findings, and opportunities to show up in person when it matters.</p>
+        <p>We publish when we have something to say. Expect a handful of substantive updates per month, every one worth your time.</p>
+        <p>Want to do more than read? File records requests, draft testimony, help analyze documents. Reply to any dispatch and we'll put you to work.</p>
+      </div>
+      <div class="subscribe-form-wrap">
+        <div class="form-title">Join the Dispatch</div>
+        <div class="form-sub">No spam. Unsubscribe anytime.</div>
+        <!--
+          Update action to your Listmonk endpoint:
+          https://list.privacyks.org/subscription/form
+          Replace LIST_UUID_HERE with your Listmonk list UUID.
+        -->
+        <form action="https://list.privacyks.org/subscription/form" method="POST">
+          <input type="hidden" name="nonce" value="">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="list">Interest</label>
+            <select id="list" name="l[]">
+              <option value="LIST_UUID_HERE">General Updates &amp; Action Alerts</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Subscribe to the Dispatch</button>
+          <p class="form-fine">Your information is never shared or sold.<br>Managed via self-hosted Listmonk.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider z1"></div>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <p class="section-label">The Dispatch — Latest</p>
+    <div class="blog-placeholder">
+      <h3>First dispatch publishes with the investigation.</h3>
+      <p>Subscribe above to be notified. Our opening report covers the Flock Safety ALPR program in full — camera locations, contract timeline, records received, and what questions remain unanswered.</p>
+      <a href="https://blog.privacyks.org" class="btn btn-ghost">Visit the Blog</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wide">
+    <div class="footer-top">
+      <div>
+        <span class="footer-brand-name">Sunflower Privacy Alliance</span>
+        <p class="footer-tagline">Defending Fourth Amendment rights in Kansas through investigative research, community organizing, and policy advocacy. Wichita-based. Nonpartisan. Not going anywhere.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#campaigns">Active Campaigns</a></li>
+          <li><a href="https://blog.privacyks.org">The Dispatch</a></li>
+          <li><a href="#subscribe">Join the Alliance</a></li>
+          <li><a href="https://petition.privacyks.org">Sign the Petition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">KORA Records Toolkit</a></li>
+          <li><a href="#">Know Your Rights</a></li>
+          <li><a href="#">Model Ordinances</a></li>
+          <li><a href="#">Press Inquiries</a></li>
+          <li><a href="mailto:info@privacyks.org">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Sunflower Privacy Alliance — Kansas. All rights reserved.</p>
+      <p class="footer-legal"><a href="#">Privacy Policy</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
