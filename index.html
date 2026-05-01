@@ -12,36 +12,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Sunflower yellow — warm contrast anchor, logo color */
   --gold:        #D4A017;
   --gold-light:  #E8B830;
   --gold-pale:   #FDF3D0;
   --gold-dark:   #A07A10;
   --gold-dim:    rgba(212,160,23,0.1);
-
-  /* Purple highlight system */
   --purple:      #6B3FA0;
   --purple-light:#8B5CC8;
   --purple-pale: #EDE6F8;
   --purple-dim:  rgba(107,63,160,0.12);
-
-  /* Backgrounds — true black */
   --black:       #0C0C0C;
   --black-soft:  #141414;
   --black-mid:   #1A1A1A;
   --black-card:  #111111;
-
-  /* Type */
   --off-white:   #F5F5F3;
   --text-body:   #B8B8B4;
   --text-muted:  #6A6A66;
-
-  /* Borders — purple-tinted */
   --border:      rgba(107,63,160,0.2);
   --border-med:  rgba(107,63,160,0.38);
   --border-full: rgba(107,63,160,0.6);
-
-  /* Alert */
   --red:         #9B2B2B;
 }
 
@@ -56,7 +45,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Noise texture */
 body::before {
   content: '';
   position: fixed;
@@ -68,12 +56,10 @@ body::before {
   background-size: 256px;
 }
 
-/* ── LAYOUT ── */
 .z1        { position: relative; z-index: 1; }
 .container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
 .wide      { max-width: 1140px; margin: 0 auto; padding: 0 2.5rem; }
 
-/* ── NAV ── */
 nav {
   position: sticky;
   top: 0;
@@ -128,7 +114,6 @@ nav {
   color: var(--off-white);
 }
 
-/* ── HERO ── */
 .hero {
   min-height: 94vh;
   display: flex;
@@ -137,8 +122,6 @@ nav {
   overflow: hidden;
   padding: 6rem 0 5rem;
 }
-
-/* Diagonal rule lines — same technique as campaign site */
 .hero-rules {
   position: absolute;
   inset: 0;
@@ -164,8 +147,6 @@ nav {
   border-left: 1px solid rgba(107,63,160,0.05);
   transform: rotate(10deg);
 }
-
-/* Hero split: text left / logo right */
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -174,7 +155,6 @@ nav {
   position: relative;
   z-index: 1;
 }
-
 .hero-eyebrow {
   display: flex;
   align-items: center;
@@ -198,7 +178,6 @@ nav {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.25; }
 }
-
 .hero-hed {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5.2rem);
@@ -212,14 +191,12 @@ nav {
   font-style: italic;
   color: var(--purple-light);
 }
-
 .hero-rule {
   width: 3rem;
   height: 1px;
   background: var(--border-med);
   margin-bottom: 1.5rem;
 }
-
 .hero-dek {
   font-size: 1.15rem;
   font-weight: 300;
@@ -228,14 +205,11 @@ nav {
   max-width: 520px;
   margin-bottom: 2.5rem;
 }
-
 .hero-actions {
   display: flex;
   gap: 0.85rem;
   flex-wrap: wrap;
 }
-
-/* Logo side */
 .hero-logo-col {
   display: flex;
   justify-content: center;
@@ -249,7 +223,6 @@ nav {
   align-items: center;
   justify-content: center;
 }
-/* Concentric purple rings */
 .hero-logo-frame::before {
   content: '';
   position: absolute;
@@ -273,7 +246,6 @@ nav {
   filter: drop-shadow(0 0 40px rgba(107,63,160,0.25)) drop-shadow(0 0 80px rgba(212,160,23,0.1));
 }
 
-/* ── BUTTONS ── */
 .btn {
   display: inline-block;
   font-family: 'DM Mono', monospace;
@@ -300,13 +272,11 @@ nav {
 }
 .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); }
 
-/* ── DIVIDER ── */
 .divider {
   height: 1px;
   background: linear-gradient(to right, transparent, var(--border-med) 30%, var(--border-med) 70%, transparent);
 }
 
-/* ── STAT STRIP ── */
 .stat-strip {
   background: var(--black-mid);
   border-top: 1px solid var(--border);
@@ -344,7 +314,6 @@ nav {
   line-height: 1.55;
 }
 
-/* ── SECTION LABEL ── */
 .section-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.6rem;
@@ -364,7 +333,6 @@ nav {
   max-width: 200px;
 }
 
-/* ── MISSION ── */
 .mission { background: var(--black-soft); padding: 5.5rem 0; position: relative; z-index: 1; }
 .mission-grid {
   display: grid;
@@ -390,7 +358,6 @@ nav {
   margin-bottom: 1rem;
 }
 .mission-body p:last-child { margin-bottom: 0; }
-
 .pillars { display: flex; flex-direction: column; }
 .pillar {
   padding: 1.4rem 0;
@@ -423,10 +390,8 @@ nav {
   line-height: 1.65;
 }
 
-/* ── CAMPAIGNS ── */
 .campaigns { background: var(--black); padding: 5.5rem 0; position: relative; z-index: 1; }
 .campaign-list { display: flex; flex-direction: column; gap: 1px; margin-top: 0.5rem; }
-
 .campaign-card {
   background: var(--black-card);
   border: 1px solid var(--border);
@@ -452,7 +417,6 @@ nav {
 .campaign-card:hover { border-color: var(--border-med); }
 .campaign-card:hover::before { background: var(--purple); }
 .campaign-card + .campaign-card { margin-top: 1rem; }
-
 .campaign-status {
   display: flex;
   align-items: center;
@@ -475,7 +439,6 @@ nav {
 .s-building .status-dot { background: var(--purple); }
 .s-research { color: var(--text-muted); }
 .s-research .status-dot { background: var(--text-muted); }
-
 .campaign-card h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
@@ -493,7 +456,6 @@ nav {
 }
 .card-action { flex-shrink: 0; padding-top: 0.15rem; }
 
-/* ── PETITION ── */
 .petition {
   background: var(--black-mid);
   border-top: 1px solid var(--border);
@@ -503,7 +465,6 @@ nav {
   z-index: 1;
   overflow: hidden;
 }
-/* Subtle gold glow */
 .petition::before {
   content: '';
   position: absolute;
@@ -573,7 +534,6 @@ nav {
   text-align: right;
 }
 
-/* ── PULLQUOTE ── */
 .pullquote {
   background: var(--black-soft);
   padding: 5.5rem 0;
@@ -619,7 +579,6 @@ nav {
   margin: 1.5rem auto 0;
 }
 
-/* ── SUBSCRIBE ── */
 .subscribe { background: var(--black); padding: 5.5rem 0; position: relative; z-index: 1; }
 .subscribe-grid {
   display: grid;
@@ -645,7 +604,6 @@ nav {
   margin-bottom: 1rem;
 }
 .subscribe-body p:last-child { margin-bottom: 0; }
-
 .subscribe-form-wrap {
   background: var(--black-card);
   border: 1px solid var(--border);
@@ -719,7 +677,6 @@ nav {
   line-height: 1.55;
 }
 
-/* ── BLOG ── */
 .blog { background: var(--black-soft); padding: 5.5rem 0; position: relative; z-index: 1; }
 .blog-placeholder {
   border: 1px solid var(--border);
@@ -763,7 +720,6 @@ nav {
   z-index: 1;
 }
 
-/* ── FOOTER ── */
 footer {
   background: var(--black-soft);
   border-top: 1px solid var(--border);
@@ -830,19 +786,17 @@ footer {
 .footer-legal a { color: var(--text-muted); text-decoration: none; }
 .footer-legal a:hover { color: var(--purple-light); }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-eyebrow { animation: fadeUp 0.5s ease both 0.05s; }
-.hero-hed     { animation: fadeUp 0.55s ease both 0.15s; }
-.hero-rule    { animation: fadeUp 0.5s ease both 0.22s; }
-.hero-dek     { animation: fadeUp 0.5s ease both 0.28s; }
-.hero-actions { animation: fadeUp 0.5s ease both 0.36s; }
+.hero-eyebrow  { animation: fadeUp 0.5s ease both 0.05s; }
+.hero-hed      { animation: fadeUp 0.55s ease both 0.15s; }
+.hero-rule     { animation: fadeUp 0.5s ease both 0.22s; }
+.hero-dek      { animation: fadeUp 0.5s ease both 0.28s; }
+.hero-actions  { animation: fadeUp 0.5s ease both 0.36s; }
 .hero-logo-col { animation: fadeUp 0.7s ease both 0.2s; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 800px) {
   .nav-links { display: none; }
   .hero { min-height: auto; padding: 5rem 0 4rem; }
@@ -904,7 +858,6 @@ footer {
   <div class="hero-rules"></div>
   <div class="wide z1">
     <div class="hero-inner">
-
       <div class="hero-text">
         <p class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
@@ -924,20 +877,14 @@ footer {
           <a href="#campaigns" class="btn btn-ghost">All Campaigns</a>
         </div>
       </div>
-
       <div class="hero-logo-col">
         <div class="hero-logo-frame">
-          <!--
-            Replace src with your actual logo file.
-            For Cloudflare Pages: place logo.png in your repo root.
-          -->
           <img
             src="logo.png"
             alt="Sunflower Privacy Alliance"
             class="hero-logo-img"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
           >
-          <!-- Fallback SVG -->
           <svg style="display:none; width:260px; height:260px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <circle cx="100" cy="100" r="94" stroke="rgba(107,63,160,0.25)" stroke-width="1.5" fill="none"/>
             <circle cx="100" cy="100" r="78" stroke="rgba(107,63,160,0.12)" stroke-width="1" fill="none" stroke-dasharray="3 6"/>
@@ -959,7 +906,6 @@ footer {
           </svg>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1029,7 +975,6 @@ footer {
   <div class="container">
     <p class="section-label">Active Campaigns</p>
     <div class="campaign-list">
-
       <div class="campaign-card">
         <div>
           <p class="campaign-status s-active">
@@ -1042,7 +987,6 @@ footer {
           <a href="https://petition.privacyks.org" class="btn btn-gold">Sign →</a>
         </div>
       </div>
-
       <div class="campaign-card">
         <div>
           <p class="campaign-status s-building">
@@ -1055,7 +999,6 @@ footer {
           <a href="#subscribe" class="btn btn-ghost">Get Involved →</a>
         </div>
       </div>
-
       <div class="campaign-card">
         <div>
           <p class="campaign-status s-research">
@@ -1068,7 +1011,6 @@ footer {
           <a href="https://blog.privacyks.org" class="btn btn-ghost">Read More →</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1116,11 +1058,6 @@ footer {
       <div class="subscribe-form-wrap">
         <div class="form-title">Join the Dispatch</div>
         <div class="form-sub">No spam. Unsubscribe anytime.</div>
-        <!--
-          Update action to your Listmonk endpoint:
-          https://list.privacyks.org/subscription/form
-          Replace LIST_UUID_HERE with your Listmonk list UUID.
-        -->
         <form action="https://list.privacyks.org/subscription/form" method="POST">
           <input type="hidden" name="nonce" value="">
           <div class="field">
@@ -1132,10 +1069,24 @@ footer {
             <input type="email" id="email" name="email" placeholder="you@example.com" required>
           </div>
           <div class="field">
-            <label for="list">Interest</label>
-            <select id="list" name="l[]">
-              <option value="LIST_UUID_HERE">General Updates &amp; Action Alerts</option>
-            </select>
+            <label>Interests — select all that apply</label>
+            <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.25rem;">
+              <label style="display:flex; align-items:center; gap:0.65rem; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer;">
+                <input type="checkbox" name="l[]" value="eeaae283-69d4-4652-802a-df8e0ea85976" checked
+                  style="width:auto; accent-color:var(--purple); cursor:pointer;">
+                Action Alerts &amp; Events
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer;">
+                <input type="checkbox" name="l[]" value="4fae0e7d-779f-4a14-a5a3-08f715d2ba2a"
+                  style="width:auto; accent-color:var(--purple); cursor:pointer;">
+                Surveillance &amp; ALPR
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer;">
+                <input type="checkbox" name="l[]" value="ae05c39a-6a01-4ce6-81ae-1d958d757480"
+                  style="width:auto; accent-color:var(--purple); cursor:pointer;">
+                Digital Rights
+              </label>
+            </div>
           </div>
           <button type="submit" class="form-submit">Subscribe to the Dispatch</button>
           <p class="form-fine">Your information is never shared or sold.<br>Managed via self-hosted Listmonk.</p>
