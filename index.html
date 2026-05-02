@@ -847,7 +847,7 @@ footer {
     <ul class="nav-links">
       <li><a href="#mission">Mission</a></li>
       <li><a href="#campaigns">Campaigns</a></li>
-      <li><a href="https://blog.privacyks.org">Blog</a></li>
+      <li><a href="https://blog.privacyks.org">Sunflower Underground</a></li>
       <li><a href="#subscribe">Join</a></li>
       <li><a href="https://petition.privacyks.org" class="nav-cta">Sign the Petition</a></li>
     </ul>
@@ -1052,9 +1052,9 @@ footer {
     <div class="subscribe-grid">
       <div class="subscribe-body">
         <h2 class="subscribe-hed">The watchers don't announce themselves. <em>Neither should accountability.</em></h2>
-        <p>Subscribe to the Sunflower Privacy Alliance dispatch — investigation updates, action alerts, public records findings, and opportunities to show up in person when it matters.</p>
+        <p>Subscribe to the Sunflower Underground — investigation updates, action alerts, public records findings, and opportunities to show up in person when it matters.</p>
         <p>We publish when we have something to say. Expect a handful of substantive updates per month, every one worth your time.</p>
-        <p>Want to do more than read? File records requests, draft testimony, help analyze documents. Reply to any dispatch and we'll put you to work.</p>
+        <p>Want to do more than read? File records requests, draft testimony, help analyze documents. Reply to any issue and we'll put you to work.</p>
       </div>
       <div class="subscribe-form-wrap">
         <div class="form-title">Join the Alliance</div>
@@ -1089,7 +1089,7 @@ footer {
               </div>
             </div>
           </div>
-          <button type="submit" class="form-submit" id="subscribe-btn">Subscribe to the Dispatch</button>
+          <button type="submit" class="form-submit" id="subscribe-btn">Join the Alliance</button>
           <p class="form-fine" id="subscribe-msg" style="display:none;"></p>
           <p class="form-fine">Your information is never shared or sold.<br>Managed via self-hosted Listmonk.</p>
         </form>
@@ -1119,14 +1119,14 @@ document.getElementById('subscribe-form').addEventListener('submit', async funct
       this.querySelectorAll('input:not([type=checkbox][type=hidden]), input[type=checkbox]').forEach(el => el.disabled = true);
     } else {
       btn.disabled = false;
-      btn.textContent = 'Subscribe to the Dispatch';
+      btn.textContent = 'Join the Alliance';
       msg.textContent = 'Something went wrong. Please try again.';
       msg.style.display = 'block';
       msg.style.color = '#9B2B2B';
     }
   } catch (err) {
     btn.disabled = false;
-    btn.textContent = 'Subscribe to the Dispatch';
+    btn.textContent = 'Join the Alliance';
     msg.textContent = 'Could not connect. Please try again.';
     msg.style.display = 'block';
     msg.style.color = '#9B2B2B';
@@ -1143,11 +1143,11 @@ document.getElementById('subscribe-form').addEventListener('submit', async funct
 <!-- BLOG -->
 <section class="blog" id="blog">
   <div class="container">
-    <p class="section-label">The Dispatch — Latest</p>
+    <p class="section-label">Sunflower Underground — Latest</p>
     <div class="blog-placeholder">
-      <h3>First dispatch publishes with the investigation.</h3>
+      <h3>First report publishes with the investigation.</h3>
       <p>Subscribe above to be notified. Our opening report covers the Flock Safety ALPR program in full — camera locations, contract timeline, records received, and what questions remain unanswered.</p>
-      <a href="https://blog.privacyks.org" class="btn btn-ghost">Visit the Blog</a>
+      <a href="https://blog.privacyks.org" class="btn btn-ghost">Visit the Sunflower Underground</a>
     </div>
   </div>
 </section>
@@ -1165,7 +1165,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async funct
         <ul>
           <li><a href="#mission">Our Mission</a></li>
           <li><a href="#campaigns">Active Campaigns</a></li>
-          <li><a href="https://blog.privacyks.org">The Dispatch</a></li>
+          <li><a href="https://blog.privacyks.org">Sunflower Underground</a></li>
           <li><a href="#subscribe">Join the Alliance</a></li>
           <li><a href="https://petition.privacyks.org">Sign the Petition</a></li>
         </ul>
