@@ -1070,14 +1070,10 @@ footer {
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required>
           </div>
+          <input type="hidden" name="l[]" value="eeaae283-69d4-4652-802a-df8e0ea85976">
           <div class="field">
             <label>Interests — select all that apply</label>
             <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.5rem;">
-              <div style="display:flex; align-items:center; gap:0.65rem;">
-                <input type="checkbox" id="list-alerts" name="l[]" value="eeaae283-69d4-4652-802a-df8e0ea85976" checked
-                  style="width:16px; height:16px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; appearance:checkbox; -webkit-appearance:checkbox;">
-                <label for="list-alerts" style="display:inline; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer; margin:0; padding:0;">Action Alerts &amp; Events</label>
-              </div>
               <div style="display:flex; align-items:center; gap:0.65rem;">
                 <input type="checkbox" id="list-alpr" name="l[]" value="4fae0e7d-779f-4a14-a5a3-08f715d2ba2a"
                   style="width:16px; height:16px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; appearance:checkbox; -webkit-appearance:checkbox;">
@@ -1087,6 +1083,21 @@ footer {
                 <input type="checkbox" id="list-digital" name="l[]" value="ae05c39a-6a01-4ce6-81ae-1d958d757480"
                   style="width:16px; height:16px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; appearance:checkbox; -webkit-appearance:checkbox;">
                 <label for="list-digital" style="display:inline; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer; margin:0; padding:0;">Digital Rights</label>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Local Chapter — optional</label>
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.5rem;">
+              <div style="display:flex; align-items:center; gap:0.65rem;">
+                <input type="checkbox" id="list-wichita" name="l[]" value="c1a37338-1f02-4ee8-94c1-4c43543aae3d"
+                  style="width:16px; height:16px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; appearance:checkbox; -webkit-appearance:checkbox;">
+                <label for="list-wichita" style="display:inline; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer; margin:0; padding:0;">Wichita &amp; Surrounding Area</label>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.65rem;">
+                <input type="checkbox" id="list-riley" name="l[]" value="9e9b3add-ad25-45f0-88cf-bb00cd9f00ec"
+                  style="width:16px; height:16px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; appearance:checkbox; -webkit-appearance:checkbox;">
+                <label for="list-riley" style="display:inline; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer; margin:0; padding:0;">Manhattan / Riley County</label>
               </div>
             </div>
           </div>
