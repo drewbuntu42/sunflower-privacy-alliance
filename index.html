@@ -456,6 +456,52 @@ nav {
 }
 .card-action { flex-shrink: 0; padding-top: 0.15rem; }
 
+.chapters { background: var(--black-soft); padding: 5.5rem 0; position: relative; z-index: 1; }
+.chapters-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-body);
+  max-width: 640px;
+  margin-bottom: 2.75rem;
+  line-height: 1.8;
+}
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+.chapter-card {
+  background: var(--black-card);
+  padding: 1.75rem 1.75rem 2rem;
+}
+.chapter-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.chapter-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+}
+.chapter-card p.chapter-desc {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
 .petition {
   background: var(--black-mid);
   border-top: 1px solid var(--border);
@@ -809,6 +855,7 @@ footer {
   .stat-cell:last-child { border-bottom: none; padding-bottom: 0; }
   .mission-grid { grid-template-columns: 1fr; gap: 3rem; }
   .campaign-card { grid-template-columns: 1fr; gap: 1rem; }
+  .chapter-grid { grid-template-columns: 1fr; }
   .petition-inner { grid-template-columns: 1fr; gap: 2rem; }
   .petition-cta-col { align-items: flex-start; }
   .petition-note { text-align: left; }
@@ -847,6 +894,7 @@ footer {
     <ul class="nav-links">
       <li><a href="#mission">Mission</a></li>
       <li><a href="#campaigns">Campaigns</a></li>
+      <li><a href="#chapters">Around the State</a></li>
       <li><a href="https://discourse.privacyks.org">Sunflower Underground</a></li>
       <li><a href="https://blog.privacyks.org">Sunflower Sentinel</a></li>
       <li><a href="#subscribe">Join</a></li>
@@ -863,7 +911,7 @@ footer {
       <div class="hero-text">
         <p class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          Active Investigation — Wichita, Kansas
+          Flagship Investigation — Wichita, Kansas
         </p>
         <h1 class="hero-hed">
           191 cameras.<br>
@@ -872,7 +920,7 @@ footer {
         </h1>
         <div class="hero-rule"></div>
         <p class="hero-dek">
-          The Wichita Police Department operates one of Kansas's largest automatic license plate reader networks — tracking every vehicle that passes, retaining the data, and refusing public access to audit logs. We asked to see the records. They said no. Now we're asking louder.
+          The Wichita Police Department operates one of Kansas's largest automatic license plate reader networks — tracking every vehicle that passes, retaining the data, and refusing public access to audit logs. We asked to see the records. They said no. Wichita is where we started. It's not where surveillance stops, and it's not where we stop either — ALPR networks are expanding into cities and counties across Kansas, and the Sunflower Privacy Alliance is organizing statewide to meet them.
         </p>
         <div class="hero-actions">
           <a href="https://petition.privacyks.org/petition/user/drew/demand-audit-log-transparency-and-city-council-oversight-of-wichitas-flock-safety-camera-network" class="btn btn-gold">Sign the Petition</a>
@@ -915,6 +963,7 @@ footer {
 <!-- STAT STRIP -->
 <div class="stat-strip z1">
   <div class="container">
+    <p class="petition-eyebrow" style="margin-bottom:1.75rem;">Flagship Investigation — Wichita, Kansas</p>
     <div class="stat-grid">
       <div class="stat-cell">
         <div class="stat-num">191</div>
@@ -980,10 +1029,10 @@ footer {
       <div class="campaign-card">
         <div>
           <p class="campaign-status s-active">
-            <span class="status-dot"></span>Active Investigation
+            <span class="status-dot"></span>Active Investigation — Flagship Campaign
           </p>
           <h3>Demand Accountability for Wichita's ALPR Network</h3>
-          <p>WPD operates 191 Flock Safety license plate readers at ~$2,500 per camera per year, funded through its own software budget after the original DOJ grant expired. We filed a Kansas Open Records Act request for audit logs showing who accessed the data and when. The request was denied. WPD has since acknowledged publicly that they lack the internal capacity to audit the system themselves. A $478,000 surveillance network with no independent oversight and no public access to records is a system operating on trust alone — and trust must be earned.</p>
+          <p>WPD operates 191 Flock Safety license plate readers at ~$2,500 per camera per year, funded through its own software budget after the original DOJ grant expired. We filed a Kansas Open Records Act request for audit logs showing who accessed the data and when. The request was denied. WPD has since acknowledged publicly that they lack the internal capacity to audit the system themselves. A surveillance network with no independent oversight and no public access to records is a system operating on trust alone — and trust must be earned. This is our model campaign: the records request template, the escalation path, and the coalition playbook we're now bringing to every Kansas community organizing against ALPR surveillance.</p>
         </div>
         <div class="card-action">
           <a href="https://petition.privacyks.org/petition/user/drew/demand-audit-log-transparency-and-city-council-oversight-of-wichitas-flock-safety-camera-network" class="btn btn-gold">Sign →</a>
@@ -1017,14 +1066,57 @@ footer {
   </div>
 </section>
 
+<!-- CHAPTERS -->
+<section class="chapters" id="chapters">
+  <div class="container">
+    <p class="section-label">Around the State</p>
+    <p class="chapters-intro">Wichita is where the Sunflower Privacy Alliance started, but ALPR networks, drone programs, and data-sharing agreements are spreading to police departments and sheriff's offices across Kansas. We're building organizing capacity statewide, using the Wichita campaign as the template.</p>
+    <div class="chapter-grid">
+      <div class="chapter-card">
+        <p class="chapter-status s-active"><span class="status-dot"></span>Established — Flagship</p>
+        <h3>Wichita</h3>
+        <p class="chapter-desc">Where it started. Active KORA litigation, city council organizing, and coalition leadership.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-status s-building"><span class="status-dot"></span>Organizing</p>
+        <h3>Manhattan / Fort Riley</h3>
+        <p class="chapter-desc">Building a regional chapter to track surveillance procurement near Fort Riley and Riley County.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-status s-building"><span class="status-dot"></span>Organizing</p>
+        <h3>Topeka</h3>
+        <p class="chapter-desc">Recruiting local organizers to monitor state-capital surveillance policy and agency contracts.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-status s-building"><span class="status-dot"></span>Organizing</p>
+        <h3>Dodge City</h3>
+        <p class="chapter-desc">Early outreach underway to document ALPR and data-sharing deployments in southwest Kansas.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-status s-building"><span class="status-dot"></span>Organizing</p>
+        <h3>Ark City</h3>
+        <p class="chapter-desc">Local contacts recruiting to bring public records requests to south-central Kansas.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-status s-research"><span class="status-dot"></span>Forming</p>
+        <h3>Andover / Butler County</h3>
+        <p class="chapter-desc">New outreach effort to build organizing presence east of Wichita.</p>
+      </div>
+    </div>
+    <a href="#subscribe" class="btn btn-gold">Start or Join a Chapter</a>
+  </div>
+</section>
+
+<div class="divider z1"></div>
+
 <!-- PETITION -->
 <div class="petition">
   <div class="container">
     <div class="petition-inner">
       <div>
-        <p class="petition-eyebrow">Open Petition — Wichita, Kansas</p>
+        <p class="petition-eyebrow">Open Petition — Flagship Campaign, Wichita, Kansas</p>
         <h2>Demand Transparency for Wichita's ALPR Surveillance Network</h2>
-        <p class="petition-sub">WPD denied our records request. They've admitted they can't audit the system themselves. If they aren't watching the watchers — and won't let us — what guardrails exist at all? Add your name.</p>
+        <p class="petition-sub">WPD denied our records request. They've admitted they can't audit the system themselves. If they aren't watching the watchers — and won't let us — what guardrails exist at all? Add your name. This is the campaign we're using as the model for the rest of the state — a win here strengthens every chapter organizing behind it.</p>
       </div>
       <div class="petition-cta-col">
         <a href="https://petition.privacyks.org/petition/user/drew/demand-audit-log-transparency-and-city-council-oversight-of-wichitas-flock-safety-camera-network" class="btn btn-gold">Sign the Petition</a>
@@ -1112,6 +1204,7 @@ footer {
                 <label for="list-riley" style="display:inline; font-family:'Crimson Pro',serif; font-size:0.95rem; text-transform:none; letter-spacing:0; color:var(--text-body); cursor:pointer; margin:0; padding:0;">Manhattan / Riley County</label>
               </div>
             </div>
+            <p style="font-family:'DM Mono', monospace; font-size:0.52rem; letter-spacing:0.06em; color:var(--text-muted); margin-top:0.75rem; line-height:1.6;">Elsewhere in Kansas? Select a topic above and note your region in the confirmation email reply — we're standing up more local chapters as organizers come on board.</p>
           </div>
           <button type="submit" class="form-submit" id="subscribe-btn">Join the Alliance</button>
           <p class="form-fine" id="subscribe-msg" style="display:none;"></p>
@@ -1207,7 +1300,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async funct
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 Sunflower Privacy Alliance — Kansas. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Sunflower Privacy Alliance — Kansas. All rights reserved.</p>
       <p class="footer-legal"><a href="#">Privacy Policy</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="#">Terms</a></p>
     </div>
   </div>
