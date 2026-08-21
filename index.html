@@ -1139,41 +1139,16 @@ async function loadEvents() {
   const list = document.getElementById('event-list');
   try {
     const res = await fetch('https://spa-calendar-proxy.andrew-cranmer.workers.dev/');
-    const icsText = await res.text();
-    const events = parseICS(icsText);
+    const data = await res.json();
+    const events = (data.events || [])
+      .map(e => ({ ...e, start: new Date(e.start), end: e.end ? new Date(e.end) : null }))
+      .filter(e => e.start && e.start > new Date())
+      .sort((a, b) => a.start - b.start)
+      .slice(0, 6);
     renderEvents(events, list);
   } catch (err) {
     list.innerHTML = '<p style="color: var(--text-muted); font-family: \'DM Mono\', monospace; font-size: 0.7rem;">Could not load events. <a href="https://discourse.privacyks.org/c/events" style="color: var(--purple-light);">See them on the forum →</a></p>';
   }
-}
-
-function parseICS(ics) {
-  const events = [];
-  const blocks = ics.split('BEGIN:VEVENT').slice(1);
-  for (const block of blocks) {
-    const get = (key) => {
-      const match = block.match(new RegExp(key + '(?:;[^:]*)?:(.*)'));
-      return match ? match[1].trim() : '';
-    };
-    events.push({
-      summary: get('SUMMARY').replace(/\\,/g, ','),
-      location: get('LOCATION').replace(/\\,/g, ','),
-      url: get('URL'),
-      start: parseICSDate(get('DTSTART')),
-      end: parseICSDate(get('DTEND'))
-    });
-  }
-  return events
-    .filter(e => e.start && e.start > new Date())
-    .sort((a, b) => a.start - b.start)
-    .slice(0, 6);
-}
-
-function parseICSDate(str) {
-  if (!str) return null;
-  const m = str.match(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/);
-  if (!m) return null;
-  return new Date(Date.UTC(+m[1], +m[2]-1, +m[3], +m[4], +m[5], +m[6]));
 }
 
 function renderEvents(events, container) {
