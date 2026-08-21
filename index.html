@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -505,6 +505,16 @@ nav {
   line-height: 1.65;
 }
 
+.calendar { background: var(--black); padding: 5.5rem 0; position: relative; z-index: 1; }
+.calendar-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-body);
+  max-width: 640px;
+  margin-bottom: 2.75rem;
+  line-height: 1.8;
+}
+
 .petition {
   background: var(--black-mid);
   border-top: 1px solid var(--border);
@@ -898,6 +908,7 @@ footer {
       <li><a href="#mission">Mission</a></li>
       <li><a href="#campaigns">Campaigns</a></li>
       <li><a href="#chapters">Groups</a></li>
+      <li><a href="#calendar">Events</a></li>
       <li><a href="https://discourse.privacyks.org">Sunflower Underground</a></li>
       <li><a href="https://blog.privacyks.org">Sunflower Sentinel</a></li>
       <li><a href="#subscribe">Join</a></li>
@@ -1112,6 +1123,87 @@ footer {
 
 <div class="divider z1"></div>
 
+<!-- CALENDAR -->
+<section class="calendar" id="calendar">
+  <div class="container">
+    <p class="section-label">Upcoming Events</p>
+    <p class="calendar-intro">Meetings, hearings, and organizing events across the state — pulled live from the Sunflower Underground forum. RSVP and discuss on the forum, or just show up.</p>
+    <div id="event-list" class="campaign-list">
+      <p style="color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 0.7rem;">Loading events…</p>
+    </div>
+  </div>
+</section>
+
+<script>
+async function loadEvents() {
+  const list = document.getElementById('event-list');
+  try {
+    const res = await fetch('https://spa-calendar-proxy.andrew-cranmer.workers.dev/');
+    const icsText = await res.text();
+    const events = parseICS(icsText);
+    renderEvents(events, list);
+  } catch (err) {
+    list.innerHTML = '<p style="color: var(--text-muted); font-family: \'DM Mono\', monospace; font-size: 0.7rem;">Could not load events. <a href="https://discourse.privacyks.org/c/events" style="color: var(--purple-light);">See them on the forum →</a></p>';
+  }
+}
+
+function parseICS(ics) {
+  const events = [];
+  const blocks = ics.split('BEGIN:VEVENT').slice(1);
+  for (const block of blocks) {
+    const get = (key) => {
+      const match = block.match(new RegExp(key + '(?:;[^:]*)?:(.*)'));
+      return match ? match[1].trim() : '';
+    };
+    events.push({
+      summary: get('SUMMARY').replace(/\\,/g, ','),
+      location: get('LOCATION').replace(/\\,/g, ','),
+      url: get('URL'),
+      start: parseICSDate(get('DTSTART')),
+      end: parseICSDate(get('DTEND'))
+    });
+  }
+  return events
+    .filter(e => e.start && e.start > new Date())
+    .sort((a, b) => a.start - b.start)
+    .slice(0, 6);
+}
+
+function parseICSDate(str) {
+  if (!str) return null;
+  const m = str.match(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/);
+  if (!m) return null;
+  return new Date(Date.UTC(+m[1], +m[2]-1, +m[3], +m[4], +m[5], +m[6]));
+}
+
+function renderEvents(events, container) {
+  if (!events.length) {
+    container.innerHTML = '<p style="color: var(--text-muted); font-family: \'DM Mono\', monospace; font-size: 0.7rem;">No upcoming events right now. <a href="https://discourse.privacyks.org/c/events" style="color: var(--purple-light);">Check the forum →</a></p>';
+    return;
+  }
+  container.innerHTML = events.map(e => {
+    const dateStr = e.start.toLocaleDateString('en-US', {
+      weekday: 'short', month: 'short', day: 'numeric',
+      hour: 'numeric', minute: '2-digit'
+    });
+    return `
+    <div class="campaign-card">
+      <div>
+        <p class="campaign-status s-building">
+          <span class="status-dot"></span>${dateStr}${e.location ? ' · ' + e.location : ''}
+        </p>
+        <h3>${e.summary}</h3>
+      </div>
+      ${e.url ? `<div class="card-action"><a href="${e.url}" class="btn btn-ghost">Details →</a></div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+loadEvents();
+</script>
+
+<div class="divider z1"></div>
+
 <!-- PETITION -->
 <div class="petition">
   <div class="container">
@@ -1285,6 +1377,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async funct
         <ul>
           <li><a href="#mission">Our Mission</a></li>
           <li><a href="#campaigns">Active Campaigns</a></li>
+          <li><a href="#calendar">Upcoming Events</a></li>
           <li><a href="https://discourse.privacyks.org">Sunflower Underground</a></li>
           <li><a href="https://blog.privacyks.org">Sunflower Sentinel</a></li>
           <li><a href="#subscribe">Join the Alliance</a></li>
